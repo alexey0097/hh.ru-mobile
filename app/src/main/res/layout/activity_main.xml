@@ -48,6 +48,11 @@
                         android:id="@+id/buttonResume"
                         android:layout_width="120dp"/>
             </LinearLayout>
+            <Button
+                    android:text="Об авторе"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/buttonAuthor"
+                    android:layout_alignParentBottom="true" android:layout_centerInParent="true"/>
         </RelativeLayout>
     </FrameLayout>
 
