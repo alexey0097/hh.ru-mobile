@@ -24,7 +24,7 @@
 
                 <ImageView
                         android:layout_width="100dp"
-                        android:layout_height="100dp" app:srcCompat="@drawable/myphoto" android:id="@+id/img"/>
+                        android:layout_height="100dp" app:srcCompat="@drawable/author" android:id="@+id/img"/>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
