@@ -1,196 +1,119 @@
 package com.example.myapplication.dao;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.objects.Resume;
+import com.example.myapplication.objects.Vacancy;
 import com.example.myapplication.objects.Work;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class RepoResume {
 
-    public static List<Work> findAll() {
+    final public static String SQL_CREATE_TABLE_RESUME =
+            " CREATE TABLE resume (" +
+            " id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+            " wageCount INTEGER," +
+            " wageType VARCHAR(100)," +
+            " profession VARCHAR(300)," +
+            " exepreinceYears INTEGER," +
+            " education VARCHAR(300)," +
+            " image INTEGER," +
+            " numberPhone VARCHAR(300)," +
+            " email VARCHAR(300)," +
+            " firstName VARCHAR(300)," +
+            " lastName VARCHAR(300)," +
+            " middleName VARCHAR(300)," +
+            " oldYears INTEGER," +
+            " gender VARCHAR(300)," +
+            " aboutMe LONGTEXT," +
+            " aboutEucation LONGTEXT," +
+            " aboutExperience LONGTEXT);";
 
-        List<Work> list = new LinkedList<>();
+    final public static String SQL_DROP_TABLE_RESUME = "DROP TABLE IF EXISTS resume";
 
-        final String abouteMe = "Я коммуникабельный, инициативный, гибкий, честный, стрессоустойчивый. Своими сильными сторонами считаю системное мышление, ориентированность на результат, хорошие управленческие навыки. Своим позитивом и энергией заряжаю команду. Не пью, не курю.";
-        final String abouteEducation = "Воронежский Государственный Университет\n" +
-                "РГФ, Теория и методика преподавания иностранных языков и культур, диплом.";
-        final String abouteExperience = "Юридическая компания Amond & Smith Ltd\n" +
-                "Россия, www.amondsmith.ru\n" +
-                "\n" +
-                "Услуги для бизнеса\n" +
-                "\n" +
-                "Консалтинговые услуги\n" +
-                "Юридическое обслуживание\n" +
-                "Советник управляющего партнера по вопросам информационной и юридической поддержки\n" +
-                "•\tПоддержка и расширение клиентской базы \n" +
-                "•\tВыстраивание взаимоотношений с новыми и действующими клиентами\n" +
-                "•\tНаписание и внедрение инструкции по работе с клиентами \n" +
-                "•\tАвтоматизация бизнесс-процессов";
+    public RepoResume() {}
 
-        Resume resume1 = new Resume(1L,
-                55000,
-                "руб.",
-                "Стюардесса",
-                5,
-                "среднее",
-                R.drawable.photo01,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Иванова",
-                "Анастасия",
-                "Витальевна",
-                32,
-                "женский",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
+    public void createTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoResume.SQL_CREATE_TABLE_RESUME); }
 
-        Resume resume2 = new Resume(2L,
-                21000,
-                "руб.",
-                "Строитель",
-                10,
-                "высшее",
-                R.drawable.photo02,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Петров",
-                "Петр",
-                "Петрович",
-                41,
-                "мужской",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
+    public void dropTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoResume.SQL_DROP_TABLE_RESUME); }
 
-        Resume resume3 = new Resume(3L,
-                34000,
-                "руб.",
-                "Секретарь",
-                11,
-                "высшее",
-                R.drawable.photo03,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Михайлова",
-                "Инна",
-                "Степановна",
-                20,
-                "женский",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
+    public void insert(Resume resume, SQLiteDatabase dataBase) {
+        // создаем объект для данных
+        ContentValues cv = new ContentValues();
+        cv.put("wageCount", resume.getWageCount());
+        cv.put("wageType", resume.getWageType());
+        cv.put("profession", resume.getProfession());
+        cv.put("exepreinceYears", resume.getExepreinceYears());
+        cv.put("education", resume.getEducation());
+        cv.put("image", resume.getImage());
+        cv.put("numberPhone", resume.getNumberPhone());
+        cv.put("email", resume.getEmail());
+        cv.put("firstName", resume.getFirstName());
+        cv.put("lastName", resume.getLastName());
+        cv.put("middleName", resume.getMiddleName());
+        cv.put("oldYears", resume.getOldYears());
+        cv.put("gender", resume.getGender());
+        cv.put("aboutMe", resume.getAboutMe());
+        cv.put("aboutEucation", resume.getAboutEucation());
+        cv.put("aboutExperience", resume.getAboutExperience());
 
-        Resume resume4 = new Resume(4L,
-                31000,
-                "руб.",
-                "Охранник",
-                2,
-                "высшее",
-                R.drawable.photo04,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Иванов",
-                "Иван",
-                "Иванович",
-                20,
-                "мужской",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
 
-        Resume resume5 = new Resume(5L,
-                45000,
-                "руб.",
-                "Менеджер по персоналу",
-                4,
-                "высшее",
-                R.drawable.photo05,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Степанов",
-                "Иван",
-                "Иванович",
-                23,
-                "мужской",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
+        dataBase.insert("resume", null, cv);
 
-        Resume resume6 = new Resume(6L,
-                65000,
-                "руб.",
-                "Финансовый директор",
-                21,
-                "высшее",
-                R.drawable.photo06,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Степанов",
-                "Иван",
-                "Иванович",
-                41,
-                "мужской",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
-
-        Resume resume7 = new Resume(7L,
-                35000,
-                "руб.",
-                "Заведующий хозйством",
-                4,
-                "высшее",
-                R.drawable.photo07,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Иванова",
-                "Светлана",
-                "Михайловна",
-                35,
-                "женский",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
-
-        Resume resume8 = new Resume(8L,
-                25000,
-                "руб.",
-                "Фотограф",
-                1,
-                "высшее",
-                R.drawable.photo08,
-                "+79530190297",
-                "stuuuudent@mail.ru",
-                "Степанов",
-                "Иван",
-                "Иванович",
-                21,
-                "мужской",
-                abouteMe,
-                abouteEducation,
-                abouteExperience
-        );
-
-        list.add(resume1);
-        list.add(resume2);
-        list.add(resume3);
-        list.add(resume4);
-        list.add(resume5);
-        list.add(resume6);
-        list.add(resume7);
-        list.add(resume8);
-
-        return list;
     }
+
+    public List<Work> findAll(SQLiteDatabase dataBase) {
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        String[] projection = { "id", "wageCount", "wageType", "profession", "exepreinceYears",
+                "education", "image", "numberPhone", "email", "firstName", "lastName",
+                "middleName", "oldYears", "gender", "aboutMe", "aboutEucation", "aboutExperience"};
+
+        // How you want the results sorted in the resulting Cursor
+        String sortOrder = "id" + " DESC";
+
+        Cursor cursor = dataBase.query(
+                "resume",   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                null,              // The columns for the WHERE clause
+                null,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
+        List<Work> listResume = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            long id = cursor.getLong(cursor.getColumnIndexOrThrow("id"));
+            int wageCount = cursor.getInt(cursor.getColumnIndexOrThrow("wageCount"));
+            String wageType = cursor.getString(cursor.getColumnIndexOrThrow("wageType"));
+            String profession = cursor.getString(cursor.getColumnIndexOrThrow("profession"));
+            int exepreinceYears = cursor.getInt(cursor.getColumnIndexOrThrow("exepreinceYears"));
+            String education = cursor.getString(cursor.getColumnIndexOrThrow("education"));
+            int image = cursor.getInt(cursor.getColumnIndexOrThrow("image"));
+            String numberPhone = cursor.getString(cursor.getColumnIndexOrThrow("numberPhone"));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow("firstName"));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow("lastName"));
+            String middleName = cursor.getString(cursor.getColumnIndexOrThrow("middleName"));
+            int oldYears = cursor.getInt(cursor.getColumnIndexOrThrow("oldYears"));
+            String gender = cursor.getString(cursor.getColumnIndexOrThrow("gender"));
+            String aboutMe = cursor.getString(cursor.getColumnIndexOrThrow("aboutMe"));
+            String aboutEucation = cursor.getString(cursor.getColumnIndexOrThrow("aboutEucation"));
+            String aboutExperience = cursor.getString(cursor.getColumnIndexOrThrow("aboutExperience"));
+
+            listResume.add(new Resume(id, wageCount, wageType, profession, exepreinceYears, education, image, numberPhone, email, firstName, lastName, middleName, oldYears, gender, aboutMe, aboutEucation, aboutExperience));
+        }
+        cursor.close();
+
+        return listResume;
+    }
+
+
 
 }

@@ -1,198 +1,110 @@
 package com.example.myapplication.dao;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import com.example.myapplication.R;
+import com.example.myapplication.objects.Resume;
 import com.example.myapplication.objects.Vacancy;
 import com.example.myapplication.objects.Work;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class RepoVacancy {
 
-    public static List<Work> findAll() {
+    final public static String SQL_CREATE_TABLE_VACANCY =
+            " CREATE TABLE vacancy (" +
+            " id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+            " wageCount INTEGER," +
+            " wageType VARCHAR(100)," +
+            " profession VARCHAR(300)," +
+            " exepreinceYears INTEGER," +
+            " education VARCHAR(300)," +
+            " image INTEGER," +
+            " numberPhone VARCHAR(300)," +
+            " email VARCHAR(300)," +
+            " nameCompany VARCHAR(300)," +
+            " graphicWork VARCHAR(300)," +
+            " aboutCompany LONGTEXT," +
+            " aboutObyas LONGTEXT," +
+            " aboutTrebov LONGTEXT," +
+            " aboutUsl LONGTEXT);";
 
-        List<Work> list = new LinkedList<>();
+    final public static String SQL_DROP_TABLE_VACANCY = "DROP TABLE IF EXISTS vacancy";
 
-        final String aboutComapny = "\"ОптиКом\" - крупная торговая компания, 19 лет на рынке упаковки и расходных материалов, приглашает на работу \"Менеджера по продажам в тендерный отдел\".";
-        final String aboutObyas = "- Централизация процесса;\n" +
-                "- Составление карт процессов со всеми развилками и шлюзами;\n" +
-                "- Определение блоков процессов под замену автоматизированными инструментами;\n" +
-                "- Запуск разработки инструментов в своей/других командах или переиспользование существующих инструментов/инструментов в разработке;\n" +
-                "- Проработка 'узких мест';\n" +
-                "- Согласование нового централизованного процесса со всеми участниками: бизнес, вспомогательные подразделения, команды разработки;\n" +
-                "- Запуск нового функционала и проработка операционного контроля (аналитика, отчетность, действия).";
-        final String aboutTrebov = "Soft:\n" +
-                "- Системность;\n" +
-                "- Нацеленность на результат;\n" +
-                "- Сильные навыки коммуникатора и фасилитатора;\n" +
-                "- Стратегическое мышление;\n" +
-                "\n" +
-                "Hard:\n" +
-                "- Опыт анализа и построения процессов;\n" +
-                "- Опыт руководства командой от 5 человек;\n" +
-                "- Опыт централизации функций (ОЦО в преимуществе).";
-        final String aboutUsl = "- Профессиональное обучение, семинары, тренинги, конференции;\n" +
-                "- ДМС, сниженные ставки по кредитованию, программы лояльности для сотрудников;\n" +
-                "- Самые инновационные, амбициозные проекты и задачи;\n" +
-                "- Комфортный офис 'Sbergile Home' с просторными опенспейсами, лаундж зонами, кафе;\n" +
-                "- Бесплатный фитнес-зал и групповые тренировки;\n" +
-                "- Дисконт - программа от множества компаний - партнеров.";
+    public RepoVacancy() {}
 
-        Vacancy vacancy1 = new Vacancy(
-                1L,
-                "ООО МАГНИТ",
-                25000,
-                "руб.",
-                "Продавец",
-                2,
-                "среднее",
-                R.drawable.vacancy1,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
+    public void createTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoVacancy.SQL_CREATE_TABLE_VACANCY); }
 
-        Vacancy vacancy2 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                45000,
-                "руб.",
-                "Менеджер по подбору персонала",
-                4,
-                "высшее",
-                R.drawable.vacancy2,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
+    public void dropTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoVacancy.SQL_DROP_TABLE_VACANCY); }
 
-        Vacancy vacancy3 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                35000,
-                "руб.",
-                "Продавец",
-                4,
-                "высшее",
-                R.drawable.vacancy3,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
+    public void insert(Vacancy vacancy, SQLiteDatabase dataBase) {
+        // создаем объект для данных
+        ContentValues cv = new ContentValues();
+        cv.put("wageCount", vacancy.getWageCount());
+        cv.put("wageType", vacancy.getWageType());
+        cv.put("profession", vacancy.getProfession());
+        cv.put("exepreinceYears", vacancy.getExepreinceYears());
+        cv.put("education", vacancy.getEducation());
+        cv.put("image", vacancy.getImage());
+        cv.put("numberPhone", vacancy.getNumberPhone());
+        cv.put("email", vacancy.getEmail());
+        cv.put("nameCompany", vacancy.getNameCompany());
+        cv.put("graphicWork", vacancy.getGraphicWork());
+        cv.put("aboutCompany", vacancy.getAboutCompany());
+        cv.put("aboutObyas", vacancy.getAboutObyas());
+        cv.put("aboutTrebov", vacancy.getAboutTrebov());
+        cv.put("aboutUsl", vacancy.getAboutUsl());
 
-        Vacancy vacancy4 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                45000,
-                "руб.",
-                "Бухгалтер  ",
-                7,
-                "среднее",
-                R.drawable.vacancy4,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
-
-        Vacancy vacancy5 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                50000,
-                "руб.",
-                "Директор магазина",
-                15,
-                "высшее",
-                R.drawable.vacancy1,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
-
-        Vacancy vacancy6 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                15000,
-                "руб.",
-                "Уборщик",
-                1,
-                "начальное",
-                R.drawable.vacancy2,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
-
-        Vacancy vacancy7 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                23000,
-                "руб.",
-                "Старший продавец",
-                2,
-                "высшее",
-                R.drawable.vacancy3,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
-
-        Vacancy vacancy8 = new Vacancy(
-                1L,
-                "АО СИРЕНЬ",
-                24000,
-                "руб.",
-                "Секретарь",
-                1,
-                "среднее",
-                R.drawable.vacancy4,
-                "+79530190297",
-                "company@mail.ru",
-                "полный день",
-                aboutComapny,
-                aboutObyas,
-                aboutTrebov,
-                aboutUsl
-        );
-
-        list.add(vacancy1);
-        list.add(vacancy2);
-        list.add(vacancy3);
-        list.add(vacancy4);
-        list.add(vacancy5);
-        list.add(vacancy6);
-        list.add(vacancy7);
-        list.add(vacancy8);
-
-        return list;
+        dataBase.insert("vacancy", null, cv);
 
     }
+
+    public List<Work> findAll(SQLiteDatabase dataBase) {
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        String[] projection = { "id", "wageCount", "wageType", "profession", "exepreinceYears",
+                "education", "image", "numberPhone", "email", "nameCompany", "graphicWork",
+                "aboutCompany", "aboutObyas", "aboutTrebov", "aboutUsl"};
+
+        // How you want the results sorted in the resulting Cursor
+        String sortOrder = "id" + " DESC";
+
+        Cursor cursor = dataBase.query(
+                "vacancy",   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                null,              // The columns for the WHERE clause
+                null,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
+        List<Work> listVacancy = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            long id = cursor.getLong(cursor.getColumnIndexOrThrow("id"));
+            int wageCount = cursor.getInt(cursor.getColumnIndexOrThrow("wageCount"));
+            String wageType = cursor.getString(cursor.getColumnIndexOrThrow("wageType"));
+            String profession = cursor.getString(cursor.getColumnIndexOrThrow("profession"));
+            int exepreinceYears = cursor.getInt(cursor.getColumnIndexOrThrow("exepreinceYears"));
+            String education = cursor.getString(cursor.getColumnIndexOrThrow("education"));
+            int image = cursor.getInt(cursor.getColumnIndexOrThrow("image"));
+            String numberPhone = cursor.getString(cursor.getColumnIndexOrThrow("numberPhone"));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+            String nameCompany = cursor.getString(cursor.getColumnIndexOrThrow("nameCompany"));
+            String graphicWork = cursor.getString(cursor.getColumnIndexOrThrow("graphicWork"));
+            String aboutCompany = cursor.getString(cursor.getColumnIndexOrThrow("aboutCompany"));
+            String aboutObyas = cursor.getString(cursor.getColumnIndexOrThrow("aboutObyas"));
+            String aboutTrebov = cursor.getString(cursor.getColumnIndexOrThrow("aboutTrebov"));
+            String aboutUsl = cursor.getString(cursor.getColumnIndexOrThrow("aboutUsl"));
+            listVacancy.add(new Vacancy(id, nameCompany, wageCount, wageType, profession, exepreinceYears, education, image, numberPhone, email, graphicWork, aboutCompany, aboutObyas, aboutTrebov, aboutUsl));
+        }
+        cursor.close();
+
+        return listVacancy;
+    }
+
 
 }
