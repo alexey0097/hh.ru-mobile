@@ -1,4 +1,4 @@
-package com.example.myapplication.dao;
+package com.example.myapplication.other;
 
 import com.example.myapplication.R;
 import com.example.myapplication.objects.Vacancy;

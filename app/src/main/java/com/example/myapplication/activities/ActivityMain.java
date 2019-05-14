@@ -44,5 +44,14 @@ public class ActivityMain extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button buttonNalog = (Button)findViewById(R.id.button_nalog);
+        buttonNalog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityMain.this, ActivityMath.class);
+                startActivity(intent);
+            }
+        });
     }
 }

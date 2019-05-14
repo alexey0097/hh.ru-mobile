@@ -79,7 +79,11 @@ public class WorkAdapter extends BaseAdapter {
         TextView experience = (TextView) vi.findViewById(R.id.experience);
         TextView experienceType = (TextView) vi.findViewById(R.id.experienceType);
 
-        imageView.setImageResource(work.getImage());
+        try {
+            imageView.setImageResource(work.getImage());
+        } catch (Exception ex) {
+            System.out.println("Ошибка чтения поля Image в объекте Work ( id ="+work.getId()+" )...");
+        }
 
         peofession.setText(work.getProfession());
 

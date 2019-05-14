@@ -20,6 +20,7 @@
         <activity android:name=".activities.ActivityWorkList"></activity>
         <activity android:name=".activities.ActivityWork"></activity>
         <activity android:name=".activities.ActivityAuthor"></activity>
+        <activity android:name=".activities.ActivityMath"></activity>
 
     </application>
 

@@ -47,6 +47,10 @@
                         android:layout_height="50dp"
                         android:id="@+id/buttonResume"
                         android:layout_width="120dp"/>
+                <Button
+                        android:text="Рассчитать НДФЛ"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/button_nalog"/>
             </LinearLayout>
             <Button
                     android:text="Об авторе"

@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.myapplication.objects.Resume;
 import com.example.myapplication.objects.Vacancy;
+import com.example.myapplication.other.CustomDataResume;
+import com.example.myapplication.other.CustomDataVacancy;
 
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         // конструктор суперкласса
-        super(context, NAME_DATABASE, null, 6);
+        super(context, NAME_DATABASE, null, 7);
     }
 
     @Override
