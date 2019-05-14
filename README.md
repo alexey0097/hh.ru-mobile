@@ -6,10 +6,10 @@
 пользователями из базы данных SQLite. Также создана страница с вычислениями
 налога на доходы физических лиц (НДФЛ).
 
-![Title page](screenshots/screen1.png | width=200)
-![Vacancy list page](screenshots/screen2.png | width=200)
-![Vacancy page](screenshots/screen3.png | width=200)
-![Resume list page](screenshots/screen4.png | width=200)
-![Resume page](screenshots/screen5.png | width=200)
-![Math page](screenshots/screen6.png | width=200)
-![About author page](screenshots/screen7.png | width=200)
+![Title page](screenshots/screen1.png)
+![Vacancy list page](screenshots/screen2.png)
+![Vacancy page](screenshots/screen3.png)
+![Resume list page](screenshots/screen4.png)
+![Resume page](screenshots/screen5.png)
+![Math page](screenshots/screen6.png)
+![About author page](screenshots/screen7.png)
