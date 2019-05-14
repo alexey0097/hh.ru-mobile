@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //проверяете какая версия сейчас и делаете апдейт
         repoVacancy.dropTable(db);
-        db.execSQL(RepoResume.SQL_DROP_TABLE_RESUME);
+        repoResume.dropTable(db);
         onCreate(db);
     }
 }
