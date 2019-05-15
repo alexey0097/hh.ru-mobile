@@ -30,7 +30,7 @@ public interface DaoWork {
     void dropTable(SQLiteDatabase dataBase);
 
     /**
-     * Метод осуществляющий вставку объекта Work в базу данных.
+     * Метод осуществляющий вставку объекта {@link Work} в базу данных.
      *
      * @param work - объект предназначенный для вставки.
      * @param dataBase - передаваемая база данных, в которой
@@ -39,11 +39,11 @@ public interface DaoWork {
     void insert(Work work, SQLiteDatabase dataBase);
 
     /**
-     * Метод осуществляющий поиск всех объектов Work в базе данных.
+     * Метод осуществляющий поиск всех объектов {@link Work} в базе данных.
      *
      * @param dataBase - передаваемая база данных, в которой
      * будет реализовываться поиск объектов в текущей таблице.
-     * @return лист содержащий все объекты Work в базе данных.
+     * @return {@link List<Work>} содержащий все объекты {@link Work} в базе данных.
      */
     List<Work> findAll(SQLiteDatabase dataBase);
 }
