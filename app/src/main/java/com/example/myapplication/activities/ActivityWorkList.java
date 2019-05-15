@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import com.example.myapplication.R;
 import com.example.myapplication.WorkAdapter;
-import com.example.myapplication.dao.DBHelper;
+import com.example.myapplication.dao.SQLiteDataBase;
 import com.example.myapplication.dao.RepoResume;
 import com.example.myapplication.dao.RepoVacancy;
 import com.example.myapplication.enums.SelectionWork;
@@ -25,7 +25,7 @@ public class ActivityWorkList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // создаем объект для создания и управления версиями БД
-        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDataBase SQLiteDataBase = new SQLiteDataBase(this);
 
         Bundle arguments = getIntent().getExtras();
 
@@ -33,9 +33,9 @@ public class ActivityWorkList extends AppCompatActivity {
 
         List<Work> listWork = new ArrayList<>();
         if (selectionWork.equals(SelectionWork.RESUME)) {
-            listWork = repoResume.findAll(dbHelper.getReadableDatabase());
+            listWork = repoResume.findAll(SQLiteDataBase.getReadableDatabase());
         } else if (selectionWork.equals(SelectionWork.VACANCY)) {
-            listWork = repoVacancy.findAll(dbHelper.getReadableDatabase());
+            listWork = repoVacancy.findAll(SQLiteDataBase.getReadableDatabase());
         }
 
         setContentView(R.layout.activity_work_list);

@@ -49,7 +49,7 @@ public class ActivityWork extends AppCompatActivity {
             aboutEducation.setText(resume.getAboutEucation());
 
             TextView experience = (TextView)findViewById(R.id.experience);
-            experience.setText(String.valueOf(work.getExepreinceYears()));
+            experience.setText(String.valueOf(resume.getExepreinceYears()));
 
             TextView experienceType = (TextView)findViewById(R.id.experienceType);
             experienceType.setText(resume.getExperienceType());

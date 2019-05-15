@@ -1,6 +1,6 @@
 package com.example.myapplication.objects;
 
-public class Resume extends Work{
+public class Resume extends MainWorkData {
 
     private String firstName;
     private String lastName;

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.myapplication.activities.ActivityWork;
 import com.example.myapplication.objects.Work;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class WorkAdapter extends BaseAdapter {
@@ -27,7 +28,6 @@ public class WorkAdapter extends BaseAdapter {
     }
 
     public WorkAdapter(Context context, List<Work> data) {
-        // TODO Auto-generated constructor stub
         this.context = context;
         this.data = data;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -35,25 +35,21 @@ public class WorkAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return data.size();
     }
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
         return data.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         View vi = convertView;
         if (vi == null) vi = inflater.inflate(R.layout.row, null);
 
@@ -67,7 +63,7 @@ public class WorkAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, ActivityWork.class);
-                intent.putExtra("work", work);
+                intent.putExtra("work", (Serializable) work);
                 activity.startActivity(intent);
             }
         });
@@ -82,7 +78,7 @@ public class WorkAdapter extends BaseAdapter {
         try {
             imageView.setImageResource(work.getImage());
         } catch (Exception ex) {
-            System.out.println("Ошибка чтения поля Image в объекте Work ( id ="+work.getId()+" )...");
+            System.out.println("Ошибка чтения поля Image в объекте MainWorkData ( id ="+ work.getId()+" )...");
         }
 
         peofession.setText(work.getProfession());

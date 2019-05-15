@@ -3,16 +3,13 @@ package com.example.myapplication.dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.myapplication.R;
 import com.example.myapplication.objects.Resume;
-import com.example.myapplication.objects.Vacancy;
 import com.example.myapplication.objects.Work;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class RepoResume {
+public class RepoResume implements DaoWork{
 
     final public static String SQL_CREATE_TABLE_RESUME =
             " CREATE TABLE resume (" +
@@ -38,11 +35,24 @@ public class RepoResume {
 
     public RepoResume() {}
 
+    /**
+     * @see {@link DaoWork#createTable(SQLiteDatabase)}
+     */
+    @Override
     public void createTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoResume.SQL_CREATE_TABLE_RESUME); }
 
+    /**
+     * @see {@link DaoWork#dropTable(SQLiteDatabase)}
+     */
+    @Override
     public void dropTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoResume.SQL_DROP_TABLE_RESUME); }
 
-    public void insert(Resume resume, SQLiteDatabase dataBase) {
+    /**
+     * @see {@link DaoWork#insert(Work, SQLiteDatabase)}
+     */
+    @Override
+    public void insert(Work work, SQLiteDatabase dataBase) {
+        Resume resume = (Resume) work;
         // создаем объект для данных
         ContentValues cv = new ContentValues();
         cv.put("wageCount", resume.getWageCount());
@@ -62,11 +72,14 @@ public class RepoResume {
         cv.put("aboutEucation", resume.getAboutEucation());
         cv.put("aboutExperience", resume.getAboutExperience());
 
-
         dataBase.insert("resume", null, cv);
 
     }
 
+    /**
+     * @see {@link DaoWork#findAll(SQLiteDatabase)}
+     */
+    @Override
     public List<Work> findAll(SQLiteDatabase dataBase) {
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.

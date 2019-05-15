@@ -1,91 +1,78 @@
 package com.example.myapplication.objects;
 
-import android.support.annotation.DrawableRes;
+/**
+ * Интерфейс предназначенный для таких объектов как {@link Resume} и {@link Vacancy}.
+ * Осуществляет реализацию операции с основной
+ * информацией между этими объектами.
+ *
+ * @author Земцов Алексей Владимирович
+ * @version 1.7
+ */
+public interface Work {
 
-import java.io.Serializable;
+    /**
+     * Метод осуществляющий получение идентификатора объекта.
+     * @return идентификатор объекта.
+     */
+    Long getId();
 
-abstract public class Work implements Serializable {
+    /**
+     * Метод осуществляющий получение уровня заработной платы.
+     * @return уровень заработной платы.
+     */
+    int getWageCount();
 
-    private Long id;
-    private int wageCount;
-    private String wageType;
-    private String profession;
-    private int exepreinceYears;
-    private String education;
-    private int image;
-    private String numberPhone;
-    private String email;
+    /**
+     * Метод осуществляющий получение наименование валюты в
+     * которой представленна заработная плата заработной платы.
+     * Это можен быть рубли, доллары или евро.
+     * @return наименование валюты.
+     */
+    String getWageType();
 
-    public Work(Long id, int wageCount, String wageType, String profession, int exepreinceYears, String education, int image, String numberPhone, String email) {
-        this.id = id;
-        this.wageCount = wageCount;
-        this.wageType = wageType;
-        this.profession = profession;
-        this.exepreinceYears = exepreinceYears;
-        this.education = education;
-        this.image = image;
-        this.numberPhone = numberPhone;
-        this.email = email;
-    }
+    /**
+     * Метод осуществляющий получение наименования профессии.
+     * @return наименование профессии.
+     */
+    String getProfession();
 
-    protected String getYear(int age) {
-        int ageLastNumber = age % 10;
-        boolean isExclusion = (age % 100 >= 11) && (age % 100 <= 14);
-        String old = "";
+    /**
+     * Метод осуществляющий получение опта работа, представленного
+     * в количественно виде. Например: 1,2,3,4,5.
+     * @return опыт работы, в числовом представлении.
+     */
+    int getExepreinceYears();
 
-        if (ageLastNumber == 1)
-            old = "год";
-        else if(ageLastNumber == 0 || ageLastNumber >= 5 && ageLastNumber <= 9)
-            old = "лет";
-        else if(ageLastNumber >= 2 && ageLastNumber <= 4)
-            old = "года";
-        if (isExclusion)
-            old = "лет";
+    /**
+     * Метод осуществляющий получение опыта работы, представленного
+     * в строчном виде. Например: год, года, лет.
+     * @return опыт работы, в строчном представлении.
+     */
+    String getExperienceType();
 
-        return old;
-    }
+    /**
+     * Метод осуществляющий получение наименования типа образования.
+     * Например: высшее, среднее, начальное.
+     * @return наименование типа образования.
+     */
+    String getEducation();
 
-    public Long getId() {return id;}
+    /**
+     * Метод осуществляющий получение идентификатора картинки.
+     * @return идентификатор картинки.
+     */
+    int getImage();
 
-    public int getWageCount() { return wageCount; }
+    /**
+     * Метод осущетсвляющий получение номера телефона в строчном виде.
+     * @return номер телефона в строчном виде.
+     */
+    String getNumberPhone();
 
-    public void setWageCount(int wageCount) { this.wageCount = wageCount; }
+    /**
+     * Метод осуществляющий получение емайла в строчном виде.
+     * @return емайл в строчном виде.
+     */
+    String getEmail();
 
-    public String getWageType() { return wageType; }
-
-    public void setWageType(String wageType) { this.wageType = wageType; }
-
-    public String getProfession() { return profession; }
-
-    public void setProfession(String profession) { this.profession = profession; }
-
-    public int getExepreinceYears() { return exepreinceYears; }
-
-    public void setExepreinceYears(int exepreinceYears) { this.exepreinceYears = exepreinceYears; }
-
-    public String getExperienceType() { return getYear(exepreinceYears); }
-
-    public String getEducation() { return education; }
-
-    public void setEducation(String education) { this.education = education; }
-
-    public int getImage() { return image; }
-
-    public void setImage(@DrawableRes int image) { this.image = image; }
-
-    public String getNumberPhone() {
-        return numberPhone;
-    }
-
-    public void setNumberPhone(String numberPhone) {
-        this.numberPhone = numberPhone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

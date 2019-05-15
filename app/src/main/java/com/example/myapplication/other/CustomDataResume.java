@@ -2,7 +2,6 @@ package com.example.myapplication.other;
 
 import com.example.myapplication.R;
 import com.example.myapplication.objects.Resume;
-import com.example.myapplication.objects.Work;
 
 import java.util.LinkedList;
 import java.util.List;

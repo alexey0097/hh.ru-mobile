@@ -10,15 +10,15 @@ import com.example.myapplication.other.CustomDataVacancy;
 
 import java.util.List;
 
-public class DBHelper extends SQLiteOpenHelper {
+public class SQLiteDataBase extends SQLiteOpenHelper {
 
     final public static String NAME_DATABASE = "WorkDataBase";
-    final public static String NAME_PARAM = "DBHelper";
+    final public static String NAME_PARAM = "SQLiteDataBase";
 
     final private RepoVacancy repoVacancy = new RepoVacancy();
     final private RepoResume repoResume = new RepoResume();
 
-    public DBHelper(Context context) {
+    public SQLiteDataBase(Context context) {
         // конструктор суперкласса
         super(context, NAME_DATABASE, null, 7);
     }

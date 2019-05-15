@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.example.myapplication.R;
-import com.example.myapplication.dao.DBHelper;
 import com.example.myapplication.enums.SelectionWork;
 
 public class ActivityMain extends AppCompatActivity {

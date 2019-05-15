@@ -3,16 +3,13 @@ package com.example.myapplication.dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.myapplication.R;
-import com.example.myapplication.objects.Resume;
 import com.example.myapplication.objects.Vacancy;
 import com.example.myapplication.objects.Work;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class RepoVacancy {
+public class RepoVacancy implements DaoWork{
 
     final public static String SQL_CREATE_TABLE_VACANCY =
             " CREATE TABLE vacancy (" +
@@ -36,11 +33,24 @@ public class RepoVacancy {
 
     public RepoVacancy() {}
 
+    /**
+     * @see {@link DaoWork#createTable(SQLiteDatabase)}
+     */
+    @Override
     public void createTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoVacancy.SQL_CREATE_TABLE_VACANCY); }
 
+    /**
+     * @see {@link DaoWork#dropTable(SQLiteDatabase)}
+     */
+    @Override
     public void dropTable(SQLiteDatabase dataBase) { dataBase.execSQL(RepoVacancy.SQL_DROP_TABLE_VACANCY); }
 
-    public void insert(Vacancy vacancy, SQLiteDatabase dataBase) {
+    /**
+     * @see {@link DaoWork#insert(Work, SQLiteDatabase)}
+     */
+    @Override
+    public void insert(Work work, SQLiteDatabase dataBase) {
+        Vacancy vacancy = (Vacancy) work;
         // создаем объект для данных
         ContentValues cv = new ContentValues();
         cv.put("wageCount", vacancy.getWageCount());
@@ -62,6 +72,10 @@ public class RepoVacancy {
 
     }
 
+    /**
+     * @see {@link DaoWork#findAll(SQLiteDatabase)}
+     */
+    @Override
     public List<Work> findAll(SQLiteDatabase dataBase) {
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
