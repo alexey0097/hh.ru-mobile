@@ -41,22 +41,25 @@
                         android:text="@string/button_vacancies"
                         android:layout_width="120dp"
                         android:layout_height="50dp"
-                        android:id="@+id/buttonVacancy"/>
+                        android:id="@+id/buttonVacancy" android:layout_margin="5dp"/>
                 <Button
                         android:text="@string/button_resume"
                         android:layout_height="50dp"
                         android:id="@+id/buttonResume"
-                        android:layout_width="120dp"/>
+                        android:layout_width="120dp" android:layout_margin="5dp"/>
                 <Button
                         android:text="Рассчитать НДФЛ"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button_nalog"/>
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content" android:id="@+id/button_nalog"
+                        android:layout_margin="5dp"/>
             </LinearLayout>
             <Button
                     android:text="Об авторе"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/buttonAuthor"
-                    android:layout_alignParentBottom="true" android:layout_centerInParent="true"/>
+                    android:layout_alignParentBottom="true" android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp" android:layout_marginStart="10dp" android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"/>
         </RelativeLayout>
     </FrameLayout>
 

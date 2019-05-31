@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SQLiteDataBase extends SQLiteOpenHelper {
 
-    final public static String NAME_DATABASE = "WorkDataBase";
+    final public static String NAME_DATABASE = "HHruMobileDataBase";
     final public static String NAME_PARAM = "SQLiteDataBase";
 
     final private RepoVacancy repoVacancy = new RepoVacancy();
@@ -20,7 +20,7 @@ public class SQLiteDataBase extends SQLiteOpenHelper {
 
     public SQLiteDataBase(Context context) {
         // конструктор суперкласса
-        super(context, NAME_DATABASE, null, 7);
+        super(context, NAME_DATABASE, null, 1);
     }
 
     @Override
